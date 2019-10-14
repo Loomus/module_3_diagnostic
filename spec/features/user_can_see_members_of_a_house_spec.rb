@@ -10,6 +10,15 @@ describe "As a user, when I visit '/'" do
       click_on 'Search For Members'
 
       expect(current_path).to eq(search_path)
+      expect(page).to have_content("18 Members")
+      expect(page).to have_css(".member", count: 18)
+
+      within(first('.member')) do
+        expect(page).to have_css('.name')
+        expect(page).to have_css('.role')
+        expect(page).to have_css('.house')
+        expect(page).to have_css('.patrounus')
+      end
     end
   end
 end
