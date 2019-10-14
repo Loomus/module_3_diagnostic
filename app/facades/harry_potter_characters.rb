@@ -3,19 +3,25 @@ class HarryPotterCharacters
     @house = house
   end
 
+  def member_count
+    members.count
+  end
+
   def members
-    conn = Faraday.new(url: "https://www.potterapi.com/v1/") do |f|
+    conn = Faraday.new(url: "https://www.potterapi.com") do |f|
       f.params['key'] = ENV['hp_key']
+      f.params['house'] = 'Gryffindor'
+      f.params['orderOfThePhoenix'] = true
       f.adapter Faraday.default_adapter
     end
 
-    response = conn.get("/characters/#{house}")
+    response = conn.get("/v1/characters")
 
     hp_member_data = JSON.parse(response.body, symbolize_names: true)
 
-    hp_member_data.map do |hp_member|
+    members = hp_member_data.map do |hp_member|
       Member.new(hp_member)
-    end 
+    end
   end
 
   private

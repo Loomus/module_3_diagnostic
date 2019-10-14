@@ -1,12 +1,9 @@
+<h2><%= facade.member_count %> Members</h2>
 <% facade.members.each do |member| %>
 <ul class="member">
   <li class="name"><%= member.name%></li>
-  <% if member.role %>
-    <li class="role"><%= member.role %></li>
-  <% end %>
+  <li class="role"><%= member.role %></li>
   <li class="house"><%= member.house %></li>
-  <% if member.patrounus %>
-    <li class="patrounus"><%= member.patrounus %></li>
-  <% end %>
+  <li class="patrounus"><%= member.patrounus %></li>
 </ul>
 <% end %>

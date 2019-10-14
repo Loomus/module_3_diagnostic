@@ -10,8 +10,8 @@ describe "As a user, when I visit '/'" do
       click_on 'Search For Members'
 
       expect(current_path).to eq(search_path)
-      expect(page).to have_content("18 Members")
-      expect(page).to have_css(".member", count: 18)
+      expect(page).to have_content("21 Members")
+      expect(page).to have_css(".member", count: 21)
 
       within(first('.member')) do
         expect(page).to have_css('.name')
