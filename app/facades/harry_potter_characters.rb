@@ -4,10 +4,10 @@ class HarryPotterCharacters
   end
 
   def member_count
-    members.count
+    gryffindor_members.count
   end
 
-  def members
+  def gryffindor_members
     conn = Faraday.new(url: "https://www.potterapi.com") do |f|
       f.params['key'] = ENV['hp_key']
       f.params['house'] = 'Gryffindor'
